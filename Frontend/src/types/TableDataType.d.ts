@@ -1,0 +1,1 @@
+type TableDataType = User | Disc | Order| Contact

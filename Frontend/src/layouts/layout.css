@@ -1,0 +1,44 @@
+body {
+  color: #566a7f;
+  background-color: #f5f5f9;
+}
+
+.search-input:focus{
+outline: none;
+}
+.brand {
+  padding: 14%;
+}
+menu {
+  list-style-type: none;
+}
+
+.menu-link {
+  color: #8592a3;
+  font-weight: bold;
+}
+
+.menu-sub-link {
+  color: #8592a3;
+}
+
+.layout-row {
+  height: 98vh;
+}
+
+.table-row-content{
+  color: #8592a3 !important;
+}
+
+
+.page-link{
+  border-radius: 0.25rem;
+  color: #8592a3 !important;
+  background-color: #F0F2F4;
+}
+.active{
+  color: white !important;
+  border: 1px solid #696CFF !important;
+  background-color: #696CFF !important;
+}
+

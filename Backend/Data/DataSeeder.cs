@@ -1,5 +1,7 @@
 ﻿
+using DiscApi.Constant;
 using DiscApi.Models.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace DiscApi.Data
@@ -8,6 +10,20 @@ namespace DiscApi.Data
     {
         public static void SeedData(IServiceProvider serviceProvider)
         {
+            using (var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole<int>>>())
+            {
+                if (roleManager.Roles.Count() == 0)
+                {
+                    string[] roleNames = { RoleName.ADMIN, RoleName.CUSTOMER };
+
+                    foreach (var roleName in roleNames)
+                    {
+                        // Create the role
+                        var role = new IdentityRole<int>(roleName);
+                        roleManager.CreateAsync(role).Wait();
+                    }
+                }
+            }
             using (var dbContext = serviceProvider.GetRequiredService<ApplicationDbContext>())
             {
                 if (!dbContext.Categories.Any())

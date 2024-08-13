@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DiscApi.Constant;
+using DiscApi.Models.DTOs.Requests;
+using DiscApi.Models.DTOs.Responses;
+using DiscApi.Models.Entities;
+using DiscApi.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace DiscApi.Controllers
 {
@@ -8,36 +12,46 @@ namespace DiscApi.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        // GET: api/<UserController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IUserService _userService;
+        private readonly ILogger<User> _logger;
+
+        public UserController(IUserService userService, ILogger<User> logger)
         {
-            return new string[] { "value1", "value2" };
+            _userService = userService;
+            _logger = logger;
         }
 
-        // GET api/<UserController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpPost("add")]
+        public async Task<IActionResult> Register([FromBody]RegisterDTO form)
         {
-            return "value";
+            try
+            {
+                var addResult = await _userService.CreateAccount(form, RoleName.CUSTOMER);
+                _logger.LogInformation("Register new account successfully");
+                return Ok(addResult);
+            }
+            catch(Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest(e.Message);
+            }         
         }
 
-        // POST api/<UserController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginDTO form)
         {
+            try
+            {
+                var loginResult = await _userService.Login(form);
+                _logger.LogInformation("Login successfully");
+                return Ok(loginResult);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return BadRequest(e.Message);
+            }
         }
 
-        // PUT api/<UserController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<UserController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

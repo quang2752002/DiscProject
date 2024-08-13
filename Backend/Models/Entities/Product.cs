@@ -1,4 +1,5 @@
 ﻿using DiscApi.Base;
+using Microsoft.AspNetCore.Http.HttpResults;
 using System.ComponentModel.DataAnnotations;
 
 namespace DiscApi.Models.Entities
@@ -21,6 +22,7 @@ namespace DiscApi.Models.Entities
         public int Quantity { get; set; } = 0;
 
         public bool IsActive { get; set; } = true;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         //nav
 

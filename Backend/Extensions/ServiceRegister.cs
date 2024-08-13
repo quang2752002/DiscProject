@@ -13,14 +13,12 @@ namespace DiscApi.Extension
         {
             ////Services
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IUserService, UserService>();
           
 
             ////Repositories
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IBaseRepository<Product>, BaseRepository<Product>>();
-
-
-
 
 
         }
