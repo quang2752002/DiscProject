@@ -11,7 +11,7 @@ import showToast from '@/utils/showToast'
 import { mutate } from 'swr'
 import useDebounce from '@/hooks/useDebounce'
 import { formatDate } from '@/utils/formatDate'
-import usePaginationStore from '@/store/pagination.store'
+import usePaginationStore from '@/store/usePaginationStore'
 import Authentication from '@/components/Authentication'
 
 type DiscForm = {
@@ -316,7 +316,7 @@ const page = () => {
                         ? `https://localhost:7090/${row.attachments[0].path}`
                         : ''
                     }
-                    width="50em"
+                    width="40em"
                     alt="img"
                   />
                 )}

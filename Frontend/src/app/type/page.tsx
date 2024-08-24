@@ -10,7 +10,7 @@ import { mutate } from 'swr'
 import useDebounce from '@/hooks/useDebounce'
 import { typeService } from '@/services/type.service'
 import { categoryService } from '@/services/category.service'
-import usePaginationStore from '@/store/pagination.store'
+import usePaginationStore from '@/store/usePaginationStore'
 import Authentication from '@/components/Authentication'
 
 type TypeForm = {

@@ -50,9 +50,9 @@ namespace DiscApi.Services.Implements
             if (result == null) return new ResponseData<UserResDTO>(new List<UserResDTO>(), 0);
             result = result.ToList();
             var totalPages = result.Count() % size > 0 ? result.Count() / size + 1 : result.Count() / size;
-            result = result!.Skip((page - 1) * size).Take(size);
+            result = result!.Reverse().Skip((page - 1) * size).Take(size);
             var data = new List<UserResDTO>();
-            foreach (var u in result.Reverse())
+            foreach (var u in result)
             {
 
                 var roleNames = await _userManager.GetRolesAsync(u);
@@ -85,7 +85,7 @@ namespace DiscApi.Services.Implements
             if (roleExist == null) throw new Exception("The role = " + role + " was not found");
             var mailExisting = await _userManager.FindByEmailAsync(userData.Email);
             if (mailExisting != null) throw new Exception("The email already used");
-            var newUser = new User()
+            var newUser = new User
             {
                 FirstName = userData.FirstName,
                 LastName = userData.LastName,

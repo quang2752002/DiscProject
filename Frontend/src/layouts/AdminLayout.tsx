@@ -24,14 +24,13 @@ const AdminLayout: React.FC<LayoutProps> = ({
           {/* Menu */}
           <div
             className="col-lg-2 col-md-0"
-            style={{ height: '100vh'}}
           >
             <Menu />
           </div>
           {/* Main */}
           <div className="col-lg-10 col-md-12">
             {/* wrapper */}
-            <div className="wrapper container">
+            <div className="wrapper container-fluid">
               <div className="row row-header">
                 <Header
                   userName={currentUser?.name ?? ''}

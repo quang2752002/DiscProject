@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import usePaginationStore from '@/store/pagination.store'
+import usePaginationStore from '@/store/usePaginationStore'
 const Pagination: React.FC = () => {
   const { currentPage, totalPages, handleChangePage } = usePaginationStore()
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1)

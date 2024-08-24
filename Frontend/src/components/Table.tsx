@@ -33,7 +33,7 @@ const Table: React.FC<ComponentProps> = ({
   return (
     <div
       className="table-wrapper bg-white border rounded shadow"
-      style={{ height: '40rem', position: 'relative' }}
+      style={{ position: 'relative' }}
     >
       <div className="table-header d-flex align-items-center justify-content-between p-4">
         <h5 className="flex-grow-1">
@@ -97,7 +97,6 @@ const Table: React.FC<ComponentProps> = ({
       </div>
       <div
         className="pagination-wrapper"
-        style={{ position: 'absolute', bottom: '1rem', right: '1rem' }}
       >
         <Pagination />
       </div>

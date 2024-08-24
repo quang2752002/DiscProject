@@ -9,7 +9,7 @@ import showToast from '@/utils/showToast'
 import { mutate } from 'swr'
 import useDebounce from '@/hooks/useDebounce'
 import { categoryService } from '@/services/category.service'
-import usePaginationStore from '@/store/pagination.store'
+import usePaginationStore from '@/store/usePaginationStore'
 import Authentication from '@/components/Authentication'
 
 type CategoryForm = {

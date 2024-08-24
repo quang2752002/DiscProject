@@ -10,7 +10,7 @@ import { mutate } from 'swr'
 import useDebounce from '@/hooks/useDebounce'
 import { contactService } from '@/services/contact.service'
 import { formatDate } from '@/utils/formatDate'
-import usePaginationStore from '@/store/pagination.store'
+import usePaginationStore from '@/store/usePaginationStore'
 import Authentication from '@/components/Authentication'
 
 type DateInput = {

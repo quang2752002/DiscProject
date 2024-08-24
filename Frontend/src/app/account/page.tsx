@@ -13,7 +13,7 @@ import { mutate } from 'swr'
 import useDebounce from '@/hooks/useDebounce'
 import { formatDate } from '@/utils/formatDate'
 import Authentication from '@/components/Authentication'
-import usePaginationStore from '@/store/pagination.store'
+import usePaginationStore from '@/store/usePaginationStore'
 
 type AccountForm = {
   id?: string

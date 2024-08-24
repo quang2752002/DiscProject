@@ -13,7 +13,7 @@ import { formatDate } from '@/utils/formatDate'
 import { orderService } from '@/services/orderservice'
 import SubTable from '@/components/SubTable'
 import { OrderTransition } from '@/constants/Constant'
-import usePaginationStore from '@/store/pagination.store'
+import usePaginationStore from '@/store/usePaginationStore'
 import Authentication from '@/components/Authentication'
 
 type DateInput = {

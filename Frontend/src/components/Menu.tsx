@@ -13,7 +13,7 @@ const Menu: React.FC = () => {
   return (
     <div
       className="bg-white shadow navbar-expand-lg "
-      style={{ position: 'relative', height: '99%' }}
+      style={{ height: '99%' }}
     >
       <div className="brand menu-header collapse navbar-collapse">
         <h4>
@@ -115,9 +115,6 @@ const Menu: React.FC = () => {
           <div
             className="m-4 btn"
             style={{
-              position: 'absolute',
-              bottom: '1em',
-              left: '2em',
               cursor: 'pointer',
             }}
             onClick={() => handleLogout()}
