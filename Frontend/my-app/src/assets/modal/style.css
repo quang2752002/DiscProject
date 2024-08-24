@@ -1,0 +1,5 @@
+.modal {
+  z-index: 1050 !important;
+  position: fixed !important;
+  padding-top: 10%;
+}
