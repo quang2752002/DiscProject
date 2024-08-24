@@ -10,7 +10,7 @@ type CategoryParams = {
 const defaultParams: CategoryParams = {
   searchString: '',
   page: 1,
-  size: 10,
+  size: 7,
 }
 
 class CategoryService extends ApiService {

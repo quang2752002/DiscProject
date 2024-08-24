@@ -171,7 +171,7 @@ const page = () => {
     let params = {
       searchString: keywords ?? '',
       page: currentPage,
-      size: 10,
+      size: 6,
     }
     try {
       let response: ResponseData<Type> = await typeService.getAllTypes(params)

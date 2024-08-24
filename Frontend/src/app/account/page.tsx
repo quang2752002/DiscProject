@@ -219,7 +219,7 @@ const page = () => {
       let response: ResponseData<User> = await accountService.getAllAccount({
         searchString: keywords ?? '',
         page: currentPage,
-        size: 10,
+        size: 7,
       })
       mutate<ResponseData<User>>('accounts', response, false)
     } catch (err) {
@@ -299,7 +299,7 @@ const page = () => {
                     src={
                       row.avatar ? `https://localhost:7090/${row.avatar}` : ''
                     }
-                    width="50em"
+                    width="30em"
                     alt="img"
                   />
                 )}

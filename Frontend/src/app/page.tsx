@@ -1,5 +1,14 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+'use client'
+import { useRouter } from 'next/navigation'
+import Loading from '@/components/Loading'
+import { useEffect } from 'react'
+import { getAuthor } from '@/utils/getAuthor'
 export default function Home() {
-  return <div className="text-danger">Hello</div>
+  const { isAuthored } = getAuthor()
+  const router = useRouter()
+  useEffect(() => {
+    if (isAuthored) router.push('/disc')
+    else router.push('/login')
+  }, [])
+  return <Loading />
 }

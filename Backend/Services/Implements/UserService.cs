@@ -110,6 +110,7 @@ namespace DiscApi.Services.Implements
             var errorMessage = "The email or password is not valid";
             var userExisting = await _userManager.FindByEmailAsync(loginForm.Email);
             if (userExisting == null) throw new Exception(errorMessage);
+            if (!userExisting.IsActive) throw new Exception("The inactive account cannot login");
             var passwordChecker = await _userManager.CheckPasswordAsync(userExisting, loginForm.Password);
             if (!passwordChecker) throw new Exception(errorMessage);
             await _signInManager.SignOutAsync();

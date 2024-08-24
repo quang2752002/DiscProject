@@ -229,7 +229,7 @@ const page = () => {
       searchString: keyword ?? '',
       categoryId: 0,
       page: page,
-      size: 10,
+      size: 6,
     }
     try {
       console.log('on fetch data')
@@ -264,8 +264,6 @@ const page = () => {
   useEffect(() => {
     const paginationStore = usePaginationStore
     const unsubscribe = paginationStore.subscribe((state, prevState) => {
-      console.log('Current Page:', state.currentPage)
-      console.log('Previous Page:', prevState.currentPage)
       if (state.currentPage != prevState.currentPage) {
         handleFetchData(state.currentPage)
       }
@@ -316,7 +314,7 @@ const page = () => {
                         ? `https://localhost:7090/${row.attachments[0].path}`
                         : ''
                     }
-                    width="40em"
+                    width="30em"
                     alt="img"
                   />
                 )}

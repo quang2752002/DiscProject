@@ -10,7 +10,7 @@ type TypeParams = {
 const defaultParams: TypeParams = {
   searchString: '',
   page: 1,
-  size: 10,
+  size: 7,
 }
 
 class TypeService extends ApiService {

@@ -12,7 +12,7 @@ const defaultParams: ProductParams = {
   searchString: '',
   categoryId: 0,
   page: 1,
-  size: 10,
+  size: 6,
 }
 
 class ProductService extends ApiService {

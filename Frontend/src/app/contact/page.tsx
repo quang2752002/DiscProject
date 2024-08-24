@@ -61,7 +61,7 @@ const page = () => {
         toDate: dateInputs.toDate,
         searchString: searchString ?? '',
         page: currentPage,
-        size: 10,
+        size: 7,
       })
       mutate<ResponseData<Contact>>('contacts', response, false)
     } catch {

@@ -38,7 +38,7 @@ const page = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [isUpdateModal, setIsUpdateModal] = useState<boolean>(false)
   //search bar state
-  const [searchString, setSearchString] = useState<string>('')
+  const [searchString, setSearchString] = useState<string>()
   const keywords = useDebounce(searchString)
   //handle table functions
   const categories = useSWRCustom<ResponseData<Category>>('categories', () =>
@@ -142,7 +142,7 @@ const page = () => {
     let params = {
       searchString: keywords ?? '',
       page: currentPage,
-      size: 10,
+      size: 7,
     }
     try {
       let response: ResponseData<Category> =
@@ -163,7 +163,7 @@ const page = () => {
     if (categories.data) {
       setTotalPages(categories.data.totalPages)
     }
-    if (keywords) {
+    if (keywords !== undefined) {
       handleFetchData(1)
     }
   }, [categories.data, keywords])
@@ -171,8 +171,6 @@ const page = () => {
   useEffect(() => {
     const paginationStore = usePaginationStore
     const unsubscribe = paginationStore.subscribe((state, prevState) => {
-      console.log('Current Page:', state.currentPage)
-      console.log('Previous Page:', prevState.currentPage)
       if (state.currentPage != prevState.currentPage) {
         handleFetchData(state.currentPage)
       }

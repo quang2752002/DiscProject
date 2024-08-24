@@ -10,7 +10,7 @@ type AccountParams = {
 const defaultParams: AccountParams = {
   searchString: '',
   page: 1,
-  size: 10,
+  size: 7,
 }
 class AccountService extends ApiService {
   constructor(baseURL: string) {

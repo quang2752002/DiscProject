@@ -69,7 +69,7 @@ const page = () => {
         toDate: dateInputs.toDate,
         searchString: searchString ?? '',
         page: page,
-        size: 10,
+        size: 7,
       })
       console.log(response.data)
       mutate<ResponseData<Order>>('orders', response, false)

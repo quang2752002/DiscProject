@@ -14,7 +14,7 @@ const defaultParams: OrderParams = {
   toDate: '',
   searchString: '',
   page: 1,
-  size: 10,
+  size: 7,
 }
 class OrderService extends ApiService {
   constructor(baseURL: string) {
