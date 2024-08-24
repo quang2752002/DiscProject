@@ -1,7 +1,5 @@
 ﻿using DiscApi.Base;
-using Microsoft.CodeAnalysis;
-using System.IO;
-using System.Runtime.InteropServices;
+using System.Text.Json.Serialization;
 
 namespace DiscApi.Models.Entities
 {
@@ -11,6 +9,8 @@ namespace DiscApi.Models.Entities
         public string Type { get; set; }
         public string Path { get; set; }
 
+
+        [JsonIgnore]
         public virtual Product? Product { get; set; }
              
     }

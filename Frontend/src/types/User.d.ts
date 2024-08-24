@@ -1,10 +1,12 @@
 type User = {
+  id: number
   firstName: string
   lastName: string
   email: string
-  dob: string
+  dob: Date
   sex: string
+  role: Role
   avatar: string
-  isActive: string
-  createdAt: string
+  isActive: boolean
+  createdAt: Date
 }

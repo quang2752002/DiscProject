@@ -1,14 +1,9 @@
 using DiscApi.Data;
 using DiscApi.Extension;
 using DiscApi.Models.Entities;
-using DiscApi.Repositories.Interfaces;
-using DiscApi.Repositories.Implements;
-using DiscApi.Services.Interfaces;
-using DiscApi.Services.Implements;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using DiscApi.Base;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -56,10 +51,8 @@ namespace BlogOnline
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = true;
             });
-            builder.Services.AddControllers().AddJsonOptions(options =>
-            {
-                options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-            });
+
+            builder.Services.AddControllers();
 
 
             builder.Services.AddEndpointsApiExplorer();
@@ -74,13 +67,26 @@ namespace BlogOnline
             {
                 options.SaveToken = true;
                 options.RequireHttpsMetadata = false;
+                options.Events = new JwtBearerEvents
+                {
+                    OnAuthenticationFailed = context =>
+                    {
+                        Console.WriteLine("Token invalid: " + context.Exception.Message);
+                        return Task.CompletedTask;
+                    },
+                    OnTokenValidated = context =>
+                    {
+                        Console.WriteLine("Token valid: " + context.SecurityToken);
+                        return Task.CompletedTask;
+                    }
+                };
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    //ValidateAudience = true,
-                    //ValidateIssuer = true,
-                    //ValidAudience = configuration["JWT:ValidAudience"],
-                    //ValidIssuer = configuration["JWT:ValidIssuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTSecret"]!))
+                    ValidateAudience = true,
+                    ValidateIssuer = true,
+                    ValidAudience = configuration["JWT:ValidAudience"],
+                    ValidIssuer = configuration["JWT:ValidIssuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"]!))
                 };
             });
 
@@ -126,13 +132,17 @@ namespace BlogOnline
 
             // Seed data if no data
             DataSeeder.SeedData(builder.Services.BuildServiceProvider());
-
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+          
             app.UseRouting();
             app.UseCors("corsapp");
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.MapControllers();
             app.Run();
         }

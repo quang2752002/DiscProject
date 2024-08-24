@@ -1,46 +1,34 @@
 import React from 'react'
 type ComponentProps = {
-  colSpan: number
+  data: OrderItems[]
 }
-const SubTable: React.FC<ComponentProps> = ({ colSpan }: ComponentProps) => {
+const SubTable: React.FC<ComponentProps> = ({ data = [] }: ComponentProps) => {
   return (
     <tr>
-      <td colSpan={colSpan}>
+      <td colSpan={9}>
         <table
           className="table table-borderless table-secondary table-sm"
           style={{ width: '100%' }}
         >
           <thead>
             <tr>
-              <th>Product name</th>
-              <th>Author</th>
-              <th>Quantity</th>
-              <th>Price (USD)</th>
-              <th>Total</th>
+              <th className="text-center">Product</th>
+              <th className="text-center">Unit Price (USD)</th>
+              <th className="text-center">Quantity</th>
+              <th className="text-center">Feedback</th>
+              <th className="text-center">VoteStar</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Thiên lý ơi</td>
-              <td>Jack 5 củ</td>
-              <td>2</td>
-              <td>500</td>
-              <td>1000</td>
-            </tr>
-            <tr>
-              <td>Thiên lý ơi</td>
-              <td>Jack 5 củ</td>
-              <td>2</td>
-              <td>500</td>
-              <td>1000</td>
-            </tr>
-            <tr>
-              <td>Thiên lý ơi</td>
-              <td>Jack 5 củ</td>
-              <td>2</td>
-              <td>500</td>
-              <td>1000</td>
-            </tr>
+            {data.map((orderItem) => (
+              <tr key={orderItem.id}>
+                <td className="text-center">{orderItem.product}</td>
+                <td className="text-center">{orderItem.unitPrice}</td>
+                <td className="text-center">{orderItem.quantity}</td>
+                <td className="text-center">{orderItem.feedback}</td>
+                <td className="text-center">{orderItem.voteStar}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </td>

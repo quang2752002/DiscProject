@@ -1,6 +1,7 @@
 ﻿using DiscApi.Base;
 using Microsoft.AspNetCore.Http.HttpResults;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace DiscApi.Models.Entities
 {
@@ -25,12 +26,13 @@ namespace DiscApi.Models.Entities
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         //nav
-
+        [JsonIgnore]
         public virtual Category? Category { get; set; }
-       
+        [JsonIgnore]
         public virtual ICollection<Attachment>? Attachments { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Cart>? Carts { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<OrderItem>? OrderItems { get; set; }
 
 

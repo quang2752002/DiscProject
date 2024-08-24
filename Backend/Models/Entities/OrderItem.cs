@@ -15,8 +15,8 @@ namespace DiscApi.Models.Entities
         [StringLength(100, MinimumLength = 1, ErrorMessage = "")]
         public string? FeedBack { get; set; }
 
-        [Range(0, 5, ErrorMessage = "Vote star must be between 0 and 5.")]
-        public int? VoteStar { get; set; }
+        [Range(1, 5, ErrorMessage = "Vote star must be between 1 and 5.")]
+        public int? VoteStar { get; set; } = 0;
 
 
         //nav

@@ -1,11 +1,13 @@
 ﻿
 using DiscApi.Data;
+using DiscApi.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace DiscApi.Base
 {
-    public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
+    public class BaseRepository<T> : IBaseRepository<T>
+    where T : class
     {
         protected readonly ApplicationDbContext _dbContext;
         protected readonly DbSet<T> _dbSet;
@@ -64,13 +66,13 @@ namespace DiscApi.Base
         /**
          * Removes an entity.
          * @param entity The entity to be removed.
-         * @return The ID of the removed entity.
+         * @return The the entity.
          */
-        public async Task<int> RemoveAsync(T entity)
+        public async Task<T> RemoveAsync(T entity)
         {
             _dbContext.Remove(entity);
             await _dbContext.SaveChangesAsync();
-            return entity.Id;
+            return entity;
         }
 
         /**

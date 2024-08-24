@@ -2,7 +2,8 @@
 
 namespace DiscApi.Base
 {
-    public interface IBaseRepository<T> where T : class
+    public interface IBaseRepository<T>
+    where T : class
     {
         public Task<T> GetByIdAsync(int id);
 
@@ -13,10 +14,8 @@ namespace DiscApi.Base
 
         public Task<T> UpdateAsync(T entity);
 
-        public Task<int> RemoveAsync(T entity);
+        public Task<T> RemoveAsync(T entity);
 
         public Task<IEnumerable<T>> SearchAsync(Expression<Func<T, bool>> predicate);
-
-        
     }
 }

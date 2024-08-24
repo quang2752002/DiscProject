@@ -1,13 +1,19 @@
-﻿using DiscApi.Models.DTOs.Requests;
+﻿using DiscApi.Extensions;
+using DiscApi.Models.DTOs.Requests;
+using DiscApi.Models.DTOs.Responses;
 using DiscApi.Models.Entities;
 using DiscApi.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Threading.Tasks;
 
 namespace DiscApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "ADMIN")]
+
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -17,63 +23,85 @@ namespace DiscApi.Controllers
             _productService = productService;
         }
 
-        // GET: api/<ProductController>
+
         [HttpGet]
-
-        public async Task<IActionResult> Get( string name = "", int idType = 0,int idCategory = 0,int index=1, int size = 9)
+        [AllowAnonymous]
+        public async Task<IActionResult> GetAll(string searchString = "", int categoryId = 0, int page = 1, int size = 10)
         {
-            var result = await _productService.ShowListAsync(name, idType, idCategory, index, size);
-
-            var data = new
+            try
             {
-                Products = result.Products,
-                Total = result.Total,
-            };
-
-            return Ok(data);
+                var result = await _productService.GetAllProductsAsync(searchString, categoryId, page, size);
+                return Ok(result);
+            } catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
-
-        // GET api/<ProductController>/get/5
-        [HttpGet("get/{id}")]
-        public async Task<IActionResult> Get(int id)
+        [HttpGet("{id}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetProductById([FromRoute] int id)
         {
-            var product = await _productService.GetProductDetail(id);
-            if (product == null)
-
-                return NotFound();
-
-            return Ok(product);
+            try
+            {
+                var result = await _productService.GetProductById(id);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // POST api/<ProductController>
-        [HttpPost]
-        public async Task<IActionResult> Post([FromForm] ProductDTO product)
+        [HttpPost("add")]
+        public async Task<IActionResult> AddProduct([FromForm] AddProductDTO form)
         {
-            var addResult = await _productService.AddAsync(product);
-            if (!addResult)
-                return BadRequest("Unable to add product");
-            return CreatedAtAction(nameof(Get), new { id = product.Id }, product);
+            try
+            {
+                var addResult = await _productService.AddProductAsync(form);
+                return Ok(addResult);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        // PUT api/<ProductController>/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromForm] ProductDTO product)
+        [HttpPatch("update")]
+        public async Task<IActionResult> UpdateProduct([FromForm] UpdateProductDTO form)
         {
-            var updateResult = await _productService.UpdateAsync(product);
-            if (!updateResult)
-                return BadRequest("Unable to update product");
-            return NoContent();
+            try
+            {
+                var update = await _productService.UpdateProductAsync(form);
+                return Ok(update);
+            } 
+            catch (CustomException ex)
+            {
+                return BadRequest(new Response(400, ex.Message));
+            } 
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response(500, ex.Message));
+            }
+
         }
 
-        // DELETE api/<ProductController>/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpPatch("status/{id}")]
+        public async Task<IActionResult> UpdateProduct([FromRoute] int id)
         {
-            var rs = await _productService.RemoveAsync(id);
-            if (!rs)
-                return BadRequest("Unable to delete product");
-            return NoContent();
+            try
+            {
+                var toggleResult = await _productService.ToggleProductStatus(id);
+                return Ok(new Response(200,$"The status of product with id = {id} has changed, current status: {toggleResult}"));
+            }
+            catch (CustomException ex)
+            {
+                return BadRequest(new Response(400, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response(500, ex.Message));
+            }
         }
     }
 }

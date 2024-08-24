@@ -133,6 +133,9 @@ namespace DiscApi.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -149,6 +152,10 @@ namespace DiscApi.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -180,6 +187,13 @@ namespace DiscApi.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("Total")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Transaction")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -198,9 +212,6 @@ namespace DiscApi.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CartId")
-                        .HasColumnType("int");
-
                     b.Property<string>("FeedBack")
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
@@ -218,8 +229,6 @@ namespace DiscApi.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CartId");
 
                     b.HasIndex("OrderId");
 
@@ -584,12 +593,8 @@ namespace DiscApi.Migrations
 
             modelBuilder.Entity("DiscApi.Models.Entities.OrderItem", b =>
                 {
-                    b.HasOne("DiscApi.Models.Entities.Cart", null)
-                        .WithMany("OrderItems")
-                        .HasForeignKey("CartId");
-
                     b.HasOne("DiscApi.Models.Entities.Order", "Order")
-                        .WithMany()
+                        .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -667,16 +672,16 @@ namespace DiscApi.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DiscApi.Models.Entities.Cart", b =>
-                {
-                    b.Navigation("OrderItems");
-                });
-
             modelBuilder.Entity("DiscApi.Models.Entities.Category", b =>
                 {
                     b.Navigation("CategoryTypes");
 
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("DiscApi.Models.Entities.Order", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("DiscApi.Models.Entities.Product", b =>

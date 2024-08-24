@@ -1,4 +1,5 @@
 ﻿using DiscApi.Base;
+using DiscApi.Constant;
 using System.ComponentModel.DataAnnotations;
 
 namespace DiscApi.Models.Entities
@@ -15,5 +16,8 @@ namespace DiscApi.Models.Entities
         [StringLength(100, MinimumLength = 1, ErrorMessage = "")]
         public string Subject { get; set; }
         public string Message { get; set; }
+        [Required]
+        public string Status { get; set; } = ContactStatus.NOT_PROCESSED;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

@@ -11,11 +11,5 @@ namespace DiscApi.Models.Entities
         //nav
         public virtual Product? Product { get; set; }
         public virtual User? Users { get; set; }
-
-        public virtual ICollection<OrderItem>? OrderItems { get; set; }
-
-
-
-
     }
 }

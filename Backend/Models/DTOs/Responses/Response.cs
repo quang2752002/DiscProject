@@ -2,12 +2,12 @@
 {
     public class Response
     {
-        public string Status {  get; set; }
+        public int StatusCode {  get; set; }
         public string Message { get; set; }
 
-        public Response(string status, string message)
+        public Response(int statusCode, string message)
         {
-            Status = status;
+            StatusCode = statusCode;
             Message = message;
         }
     }

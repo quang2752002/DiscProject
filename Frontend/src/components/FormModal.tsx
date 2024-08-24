@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react'
 import Modal from 'react-modal'
 type ModalProps = {
   isOpen: boolean
-  setModalIsOpen: (value: boolean) => void
+  onClose: () => void
+  onCreate?: () => void
+  onUpdate?: () => void
+  children: React.ReactNode
+  update?: boolean
+  noSubmitButton?: boolean
 }
 const customStyles = {
   content: {
-    top: '30%',
+    top: '50%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
@@ -16,55 +21,42 @@ const customStyles = {
   },
 }
 
-const FormModal: React.FC<ModalProps> = ({ isOpen, setModalIsOpen }) => {
-  const closeModal = () => {
-    setModalIsOpen(false)
-  }
+const FormModal: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  onCreate = () => {},
+  onUpdate = () => {},
+  children,
+  update = false,
+  noSubmitButton = false,
+}) => {
   return (
     <div className="rounded shadow" style={{ zIndex: 10 }}>
-      <Modal
-        isOpen={isOpen}
-        style={customStyles}
-        contentLabel="Example Modal"
-        className=""
-      >
-        <h4 className="text-center">New Disc</h4>
+      <Modal isOpen={isOpen} style={customStyles} contentLabel="Example Modal">
         <form>
-          <div className="form-group mb-3">
-            <label className="text-uppercase">Email address:</label>
-            <input
-              type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              placeholder="Enter email"
-            />
-          </div>
-          <div className="form-group mb-4">
-            <label className="text-uppercase">Password:</label>
-            <input
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder="Password"
-            />
-          </div>
+          {children}
+
           <div className="d-flex justify-content-end">
             <button
               className="btn btn-outline-danger text-danger mx-2"
               onClick={() => {
-                closeModal()
+                onClose()
               }}
             >
               Cancel
             </button>
-            <button
-              type="submit"
-              className="btn btn-success border-0"
-              style={{ backgroundColor: '#71DD37' }}
-            >
-              Submit
-            </button>
+            {!noSubmitButton && (
+              <button
+                type="button"
+                className="btn btn-success border-0"
+                style={{ backgroundColor: '#71DD37' }}
+                onClick={() => {
+                  !update ? onCreate() : onUpdate()
+                }}
+              >
+                {!update ? 'Submit' : 'Update'}
+              </button>
+            )}
           </div>
         </form>
       </Modal>

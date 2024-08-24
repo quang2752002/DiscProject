@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 type HeaderProps = {
   userName: string
+  onChangeSearchString: (value: string) => void
 }
-const Navbar: React.FC<HeaderProps> = ({ userName }: HeaderProps) => {
+const Navbar: React.FC<HeaderProps> = ({
+  userName,
+  onChangeSearchString,
+}: HeaderProps) => {
   return (
     <header className="header bg-light mt-3 mb-4 ">
       <div className="wrapper-header d-flex justify-content-between align-items-center rounded shadow bg-white">
@@ -12,6 +16,7 @@ const Navbar: React.FC<HeaderProps> = ({ userName }: HeaderProps) => {
             className="search-input border-0 px-1"
             type="text"
             placeholder="Search..."
+            onChange={(e) => onChangeSearchString(e.target.value)}
           />
         </div>
         <div className="profile d-flex align-items-center">

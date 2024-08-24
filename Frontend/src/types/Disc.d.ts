@@ -1,10 +1,14 @@
 type Disc = {
-    name: string,
-    category: string,
-    author: string,
-    price: string,
-    stock: number,
-    image: string,
-    creationDate:string,
-    status:string
+  id: int
+  name: string
+  description?: string
+  price: number
+  author: string
+  quantity: number
+  isActive: boolean
+  createdAt: Date
+  category: Category
+  attachments?: Attachment[]
+  carts?: Cart[]
+  orderItems?: OrderItems[]
 }

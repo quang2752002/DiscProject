@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Text.Json.Serialization;
 
 namespace DiscApi.Models.Entities
 {
@@ -24,10 +25,15 @@ namespace DiscApi.Models.Entities
         public string? Avatar { get; set; }
         public bool IsActive { get; set; } = true;
         public DateTime? CreatedAt { get; set; } = DateTime.Now;
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName}";
+        }
+
         //navigation properies
-
+        [JsonIgnore]
         public virtual ICollection<Cart>? Carts { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<Order>? Orders { get; set; }
 
 

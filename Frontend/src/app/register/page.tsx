@@ -2,155 +2,189 @@
 import React, { useState } from 'react'
 import '@/app/login/page.css'
 import Link from 'next/link'
-import axiosInstance from '@/api/axiosInstance'
-import showToast from '@/utils/showToast'
-import Cookies from 'js-cookie'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
-type registerForm = {
+import { accountService } from '@/services/account.service'
+import showToast from '@/utils/showToast'
+
+type RegisterForm = {
   firstName: string
   lastName: string
   email: string
   password: string
   confirmPassword: string
+  privacy: boolean
 }
-const page = () => {
-  const [isCheckedPrivacy, setIsCheckedPrivacy] = useState<boolean>(false)
-  const [isMatchedPassword, setIsMatchedPassword] = useState<boolean>(false)
-  const [form, setForm] = useState<registerForm>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  })
+
+const Page = () => {
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterForm>()
+
+  const [isShowPassword, setIsShowPassword] = useState(false)
   const router = useRouter()
-  const handleSetForm = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    key: keyof registerForm
-  ) => {
-    const newForm = { ...form }
-    newForm[key] = event.target.value
-    if (key === 'password' || key === 'confirmPassword') {
-      setIsMatchedPassword(newForm.password === newForm.confirmPassword)
+
+  const handleSubmitForm: SubmitHandler<RegisterForm> = async (data) => {
+    try {
+      await accountService.register({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        password: data.password,
+      })
+      showToast('success', 'Register successfully')
+      const timer = setTimeout(() => {
+        router.push('/login')
+      }, 1000)
+      return () => clearTimeout(timer)
+    } catch (error: any) {
+      console.log(error.message)
+      showToast('error', 'Failed to register new account')
     }
-    setForm(newForm)
   }
-  const handleSubmitForm = () => {
-    var formData = new FormData()
-    formData.append('firstName', form.firstName)
-    formData.append('lastName', form.lastName)
-    formData.append('email', form.email)
-    formData.append('password', form.password)
-    axiosInstance
-      .post('/user/add', formData)
-      .then((response) => {
-        showToast('success', 'Register successfully')
-        const timer = setTimeout(() => {
-          router.push('/login')
-        }, 1000)
-      })
-      .catch((err) => {
-        showToast('error', err.response.data)
-      })
-  }
+
   return (
     <div className="wrapper">
       <div className="container-fluid full-height d-flex align-items-center justify-content-center">
         <div className="row justify-content-center w-100">
           <div className="col-12 col-md-10 col-lg-5 col-xl-3">
-            <form className="p-4 border rounded shadow bg-white">
+            <form
+              className="p-4 border rounded shadow bg-white"
+              onSubmit={handleSubmit(handleSubmitForm)}
+            >
               <h4 className="text-center mb-4 form-title">Disc Store</h4>
               <div>
                 <div className="form-group">
                   <label className="my-3 input-label">FIRST NAME:</label>
                   <input
+                    {...register('firstName', {
+                      required: 'First name is required',
+                      minLength: {
+                        value: 2,
+                        message: 'First name must be at least 2 characters',
+                      },
+                    })}
                     type="text"
                     className="form-control mb-3"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
                     placeholder="Enter your first name"
-                    value={form.firstName}
-                    onChange={(e) => handleSetForm(e, 'firstName')}
                   />
+                  {errors.firstName && (
+                    <p className="text-danger">{errors.firstName.message}</p>
+                  )}
                 </div>
                 <div className="form-group">
                   <label className="my-3 input-label">LAST NAME:</label>
                   <input
-                    type="TEXT"
+                    {...register('lastName', {
+                      required: 'Last name is required',
+                      minLength: {
+                        value: 2,
+                        message: 'Last name must be at least 2 characters',
+                      },
+                    })}
+                    type="text"
                     className="form-control mb-3"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
                     placeholder="Enter your last name"
-                    value={form.lastName}
-                    onChange={(e) => handleSetForm(e, 'lastName')}
                   />
+                  {errors.lastName && (
+                    <p className="text-danger">{errors.lastName.message}</p>
+                  )}
                 </div>
                 <div className="form-group">
                   <label className="my-3 input-label">EMAIL:</label>
                   <input
-                    type="TEXT"
+                    {...register('email', {
+                      required: 'Email is required',
+                      pattern: {
+                        value: /\S+@\S+\.\S+/,
+                        message: 'Invalid email',
+                      },
+                    })}
+                    type="email"
                     className="form-control mb-3"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
                     placeholder="Enter your email"
-                    value={form.email}
-                    onChange={(e) => handleSetForm(e, 'email')}
                   />
+                  {errors.email && (
+                    <p className="text-danger">{errors.email.message}</p>
+                  )}
                 </div>
                 <div className="form-group">
                   <label className="mb-3 input-label">PASSWORD:</label>
                   <div className="d-flex">
                     <input
-                      type="password"
+                      {...register('password', {
+                        required: 'Password is required',
+                        minLength: {
+                          value: 6,
+                          message: 'Password must be at least 6 characters',
+                        },
+                        pattern: {
+                          value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/,
+                          message:
+                            'Password must contain at least one uppercase letter, one lowercase letter, and one number',
+                        },
+                      })}
+                      type={isShowPassword ? 'text' : 'password'}
                       className="form-control mb-3 border-end-0 rounded-end-0"
-                      id="exampleInputPassword1"
                       placeholder="············"
-                      value={form.password}
-                      onChange={(e) => handleSetForm(e, 'password')}
                     />
-                    <span className="px-2 py-2 border border-start-0 rounded rounded-start-0 mb-3 text-center">
-                      <i className="bi bi-eye px-2" />
+                    <span
+                      className="px-2 py-2 border border-start-0 rounded rounded-start-0 mb-3 text-center"
+                      onClick={() => setIsShowPassword(!isShowPassword)}
+                    >
+                      {isShowPassword ? (
+                        <i className="bi bi-eye-slash"></i>
+                      ) : (
+                        <i className="bi bi-eye" />
+                      )}
                     </span>
                   </div>
+                  {errors.password && (
+                    <p className="text-danger">{errors.password.message}</p>
+                  )}
                 </div>
                 <div className="form-group mb-2">
                   <label className="mb-3 input-label">CONFIRM PASSWORD:</label>
                   <div className="d-flex">
                     <input
-                      type="password"
+                      {...register('confirmPassword', {
+                        required: 'Please confirm your password',
+                        validate: (value) =>
+                          value === watch('password') ||
+                          'Passwords do not match',
+                      })}
+                      type={isShowPassword ? 'text' : 'password'}
                       className="form-control mb-3 border-end-0 rounded-end-0"
-                      id="exampleInputPassword1"
                       placeholder="············"
-                      value={form.confirmPassword}
-                      onChange={(e) => handleSetForm(e, 'confirmPassword')}
                     />
-                    <span className="px-2 py-2 border border-start-0 rounded rounded-start-0 mb-3 text-center">
-                      <i className="bi bi-eye px-2" />
+                    <span
+                      className="px-2 py-2 border border-start-0 rounded rounded-start-0 mb-3 text-center"
+                      onClick={() => setIsShowPassword(!isShowPassword)}
+                    >
+                      {isShowPassword ? (
+                        <i className="bi bi-eye-slash"></i>
+                      ) : (
+                        <i className="bi bi-eye" />
+                      )}
                     </span>
                   </div>
-                  {form.password.length > 0 ||
-                  form.confirmPassword.length > 0 ? (
-                    <div>
-                      {isMatchedPassword ? (
-                        <small className="text-success">
-                          Password is matched
-                        </small>
-                      ) : (
-                        <small className="text-danger">
-                          Password is not matched
-                        </small>
-                      )}
-                    </div>
-                  ) : (
-                    ''
+                  {errors.confirmPassword && (
+                    <p className="text-danger">
+                      {errors.confirmPassword.message}
+                    </p>
                   )}
                 </div>
                 <div className="form-check">
                   <input
+                    {...register('privacy', {
+                      required: 'Please agree to privacy policy & terms',
+                    })}
                     type="checkbox"
                     className="form-check-input"
                     id="exampleCheck1"
-                    onChange={() => setIsCheckedPrivacy(!isCheckedPrivacy)}
                   />
                   <label className="form-check-label mb-3">
                     I agree to{' '}
@@ -158,16 +192,17 @@ const page = () => {
                       privacy policy & terms
                     </span>
                   </label>
+                  {errors.privacy && (
+                    <p className="text-danger">{errors.privacy.message}</p>
+                  )}
                 </div>
+
                 <div className="mb-3">
                   <button
-                    type="button"
-                    onClick={() => handleSubmitForm()}
                     className="btn btn-primary btn-submit"
-                    disabled={!isCheckedPrivacy || !isMatchedPassword}
                     style={{ width: '100%' }}
                   >
-                    Submit
+                    Sign in
                   </button>
                 </div>
                 <div className="text-center">
@@ -187,4 +222,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
