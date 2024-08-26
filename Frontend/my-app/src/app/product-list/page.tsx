@@ -10,7 +10,6 @@ import Footer from "../component/footer/page";
 import { useRouter } from 'next/navigation'; // Import from next/navigation
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Import toast CSS
-import { log } from "console";
 import { Category } from "@/model/Category";
 import { CategoryService } from "@/services/CategoryService";
 
@@ -24,12 +23,11 @@ const ProductList = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedType, setSelectedType] = useState<number>(0);
   const [selectedCategory, setSelectedCategory] = useState<number>(0);
-  const [types, setTypes] = useState<Type[]>([]); // State to store types
-  const [categories, setCategories] = useState<Category[]>([]); // State to store categories
+  const [types, setTypes] = useState<Type[]>([]); 
+  const [categories, setCategories] = useState<Category[]>([]); 
   const router = useRouter();
   const cartService = new CartService();
 
-  // Fetch types when the component mounts
   useEffect(() => {
     const fetchTypes = async () => {
       const typeService = new TypeService();

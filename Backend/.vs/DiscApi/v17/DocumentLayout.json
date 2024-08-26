@@ -3,20 +3,40 @@
   "WorkspaceRootPath": "D:\\C#\\Git\\DiscProject\\Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\services\\implements\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:services\\implements\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\repositories\\implements\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:repositories\\implements\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\controllers\\typecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:controllers\\typecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\controllers\\orderitemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:controllers\\orderitemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\services\\implements\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:services\\implements\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\repositories\\implements\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:repositories\\implements\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\services\\implements\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -33,26 +53,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\services\\interfaces\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:services\\interfaces\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\controllers\\typecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:controllers\\typecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\controllers\\orderitemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:controllers\\orderitemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|d:\\c#\\git\\discproject\\backend\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8297C1E9-CFC7-4C79-915D-2926BB0C3445}|DiscApi.csproj|solutionrelative:controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,44 +70,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Services\\Implements\\UserService.cs",
               "RelativeDocumentMoniker": "Services\\Implements\\UserService.cs",
               "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Services\\Implements\\UserService.cs",
               "RelativeToolTip": "Services\\Implements\\UserService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFMAAAAJAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAFQAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-24T03:01:24.484Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProductRepository.cs",
-              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Repositories\\Implements\\ProductRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\Implements\\ProductRepository.cs",
-              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Repositories\\Implements\\ProductRepository.cs",
-              "RelativeToolTip": "Repositories\\Implements\\ProductRepository.cs",
-              "ViewState": "AQIAAKAAAAAAAAAAAAAqwKcAAAAMAAAA",
+              "DocumentIndex": 5,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CartController.cs",
+              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\CartController.cs",
+              "RelativeToolTip": "Controllers\\CartController.cs",
+              "ViewState": "AQIAAIUAAAAAAAAAAAAAAIIAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T04:08:38.364Z"
+              "WhenOpened": "2024-08-23T07:32:41.456Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Services\\Implements\\ProductService.cs",
-              "RelativeDocumentMoniker": "Services\\Implements\\ProductService.cs",
-              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Services\\Implements\\ProductService.cs",
-              "RelativeToolTip": "Services\\Implements\\ProductService.cs",
-              "ViewState": "AQIAAK4AAAAAAAAAAAAowLcAAABPAAAA",
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoryController.cs",
+              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "Controllers\\CategoryController.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAmwBsAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T07:00:34.15Z"
+              "WhenOpened": "2024-08-23T07:37:14.11Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "OrderItemController.cs",
+              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\OrderItemController.cs",
+              "RelativeDocumentMoniker": "Controllers\\OrderItemController.cs",
+              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\OrderItemController.cs",
+              "RelativeToolTip": "Controllers\\OrderItemController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFoAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T07:31:50.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ProductController.cs",
               "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
@@ -115,29 +130,31 @@
               "RelativeToolTip": "Controllers\\ProductController.cs",
               "ViewState": "AQIAAKAAAAAAAAAAAAAswLMAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T07:08:25.74Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IProductRepository.cs",
-              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Repositories\\Interfaces\\IProductRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\Interfaces\\IProductRepository.cs",
-              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Repositories\\Interfaces\\IProductRepository.cs",
-              "RelativeToolTip": "Repositories\\Interfaces\\IProductRepository.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAA0wA8AAABOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-24T03:10:30.185Z"
+              "WhenOpened": "2024-08-23T07:08:25.74Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "TypeController.cs",
+              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\TypeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TypeController.cs",
+              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\TypeController.cs",
+              "RelativeToolTip": "Controllers\\TypeController.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwBQAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T07:40:39.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Controllers\\UserController.cs",
               "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\UserController.cs",
               "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAuwCgAAAAMAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACgAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-23T07:10:30.531Z",
               "EditorCaption": ""
@@ -145,6 +162,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "Controllers\\OrderController.cs",
+              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "Controllers\\OrderController.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAwwEEAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T07:10:30.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "IProductService.cs",
               "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Services\\Interfaces\\IProductService.cs",
               "RelativeDocumentMoniker": "Services\\Interfaces\\IProductService.cs",
@@ -156,7 +186,43 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
+              "Title": "IProductRepository.cs",
+              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Repositories\\Interfaces\\IProductRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Interfaces\\IProductRepository.cs",
+              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Repositories\\Interfaces\\IProductRepository.cs",
+              "RelativeToolTip": "Repositories\\Interfaces\\IProductRepository.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAA0wA8AAABOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-24T03:10:30.185Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Services\\Implements\\ProductService.cs",
+              "RelativeDocumentMoniker": "Services\\Implements\\ProductService.cs",
+              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Services\\Implements\\ProductService.cs",
+              "RelativeToolTip": "Services\\Implements\\ProductService.cs",
+              "ViewState": "AQIAAK4AAAAAAAAAAAAowLcAAABPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T07:00:34.15Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Repositories\\Implements\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Implements\\ProductRepository.cs",
+              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Repositories\\Implements\\ProductRepository.cs",
+              "RelativeToolTip": "Repositories\\Implements\\ProductRepository.cs",
+              "ViewState": "AQIAAKAAAAAAAAAAAAAqwKcAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T04:08:38.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
@@ -165,67 +231,6 @@
               "ViewState": "AQIAAAYAAAAAAAAAAAAwwBEAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-24T03:28:19.698Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "OrderItemController.cs",
-              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\OrderItemController.cs",
-              "RelativeDocumentMoniker": "Controllers\\OrderItemController.cs",
-              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\OrderItemController.cs",
-              "RelativeToolTip": "Controllers\\OrderItemController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFoAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T07:31:50.851Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CartController.cs",
-              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\CartController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CartController.cs",
-              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\CartController.cs",
-              "RelativeToolTip": "Controllers\\CartController.cs",
-              "ViewState": "AQIAAIUAAAAAAAAAAAAAAIIAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T07:32:41.456Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CategoryController.cs",
-              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "Controllers\\CategoryController.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAAmwBsAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T07:37:14.11Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "Controllers\\OrderController.cs",
-              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "Controllers\\OrderController.cs",
-              "ViewState": "AQIAADgAAAAAAAAAAAA6wEQAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T07:10:30.554Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "TypeController.cs",
-              "DocumentMoniker": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\TypeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\TypeController.cs",
-              "ToolTip": "D:\\C#\\Git\\DiscProject\\Backend\\Controllers\\TypeController.cs",
-              "RelativeToolTip": "Controllers\\TypeController.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAwBQAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T07:40:39.466Z"
             }
           ]
         }

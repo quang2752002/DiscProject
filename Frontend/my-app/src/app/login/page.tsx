@@ -4,9 +4,8 @@ import React, { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation'; // Import from next/navigation
 import { LoginService } from '@/services/LoginService';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import "bootstrap-icons/font/bootstrap-icons.css";
-import 'bootstrap/dist/css/bootstrap.css';
+
+import "@/assets/css/login.css"
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState<string>('');
@@ -32,34 +31,35 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div className="container d-flex justify-content-center align-items-center vh-100">
-            <div className="text-center">
-                <form onSubmit={handleLogin} className="p-4 border rounded bg-light">
-                    <div className="mb-3">
-                        <input
-                            type="text" placeholder="Username"
-                            className="form-control"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <input
-                            type="password" placeholder="Password"
-                            className="form-control"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <button type="submit" className="btn btn-primary mr-2">Login</button>
-                    <a type="submit" href="/register" className="btn btn-primary">Register</a>
+       <div className="wrapper">
+  <form onSubmit={handleLogin}>
+    <h2>Login</h2>
+    <div className="input-field">
+      <input type="text"  value={username} 
+             onChange={(e) => setUsername(e.target.value)}
+                            required />
+      <label>Username</label>
+    </div>
+   
+   
+    <div className="input-field">
+      <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+      <label> Password</label>
+    </div>
+    <div className="forget">
+      <label htmlFor="remember">
+        <input type="checkbox" id="remember" />
+        <p>Remember me</p>
+      </label>
+      <a href="#">Forgot password?</a>
+    </div>
+    <button type="submit">Log In</button>
+    <div className="register">
+      <p>Don't have an account? <a href="/register">Register</a></p>
+    </div>
+  </form>
+</div>
 
-                </form>
-            </div>
-            <ToastContainer />
-        </div>
     );
 };
 
