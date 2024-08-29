@@ -33,23 +33,19 @@ namespace DiscApi.Controllers
                 var username = User.FindFirst(ClaimTypes.Name)?.Value;
                 int userId = await _userService.getUserId(username);
 
-                if (userId != 0)
-                {
-                    var query = await _cartService.getCart(userId);
-
-                    if (query != null)
-                    {
-                        return Ok(query);
-                    }
-                    else
-                    {
-                        return NotFound();
-                    }
-                }
-                else
+                if (userId == 0)
                 {
                     return Unauthorized();
                 }
+
+                var query = await _cartService.getCart(userId);
+                if (query == null)
+                    return NotFound();
+                return Ok(query);
+
+
+
+
             }
             catch (Exception ex)
             {
@@ -66,17 +62,16 @@ namespace DiscApi.Controllers
                 var username = User.FindFirst(ClaimTypes.Name)?.Value;
                 int userId = await _userService.getUserId(username);
 
-                if (userId != 0)
-                {
-                    var isCreate = await _cartService.InsertAsync(userId, productId, quantity);
-                    if (isCreate)
-                        return Ok(new { Message = "Product added to cart successfully." });
-                    return BadRequest();
-                }
-                else
+
+                if (userId == 0)
                 {
                     return Unauthorized();
                 }
+                var isCreate = await _cartService.InsertAsync(userId, productId, quantity);
+                if (isCreate == false)
+                    return BadRequest();
+                return Ok(new { Message = "Product added to cart successfully." });
+
             }
             catch (Exception ex)
             {
@@ -91,9 +86,10 @@ namespace DiscApi.Controllers
             try
             {
                 bool isUpdated = await _cartService.UpdateAsync(id, quantity);
-                if (isUpdated)
-                    return Ok(new { Message = "Product updated in cart successfully." });
-                return BadRequest(new { Message = "Failed to update product in cart." });
+                if (!isUpdated)
+                    return BadRequest(new { Message = "Failed to update product in cart." });
+                return Ok(new { Message = "Product updated in cart successfully." });
+
 
             }
             catch (Exception ex)
@@ -109,9 +105,10 @@ namespace DiscApi.Controllers
             try
             {
                 bool isDelete = await _cartService.DeleteAsync(id);
-                if (isDelete)
-                    return Ok(new { Message = "Deleted" });
-                return BadRequest(new { Message = "Failed to delete" });
+                if (!isDelete)
+                    return BadRequest(new { Message = "Failed to delete" });
+                return Ok(new { Message = "Deleted" });
+                
             }
             catch (Exception ex)
             {
@@ -126,9 +123,10 @@ namespace DiscApi.Controllers
             try
             {
                 bool isUpdate = await _cartService.UpdateQuantity(request.Id, request.Quantity);
-                if (isUpdate)
-                    return Ok(new { Message = "Updated" });
-                return BadRequest();
+                if (!isUpdate)
+                    return BadRequest();
+                return Ok(new { Message = "Updated" });
+                
             }
             catch (Exception ex)
             {
@@ -142,6 +140,8 @@ namespace DiscApi.Controllers
             try
             {
                 var query = await _cartService.GetCheckOut(Id);
+                if (query == null)
+                    return NotFound();
                 return Ok(query);
             }
             catch (Exception ex)

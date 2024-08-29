@@ -64,23 +64,15 @@ namespace DiscApi.Controllers
             {
                 var username = User.FindFirst(ClaimTypes.Name)?.Value;
                 int userId = await _userService.getUserId(username);
-                if (userId != 0)
-                {
-                    var query = await _orderItemService.GetOrderHistory(userId);
 
-                    if (query != null)
-                    {
-                        return Ok(query);
-                    }
-                    else
-                    {
-                        return NotFound();
-                    }
-                }
-                else
+                if (userId == 0) 
                 {
                     return Unauthorized();
                 }
+                var query = await _orderItemService.GetOrderHistory(userId);
+                if(query == null)
+                    return NotFound();
+                return Ok(query);               
             }
             catch (Exception ex)
             {

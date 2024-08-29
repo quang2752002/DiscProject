@@ -15,17 +15,14 @@ namespace DiscApi.Controllers
     {
         private readonly IOrderService _orderService;
         private readonly IUserService _userService;
+        private readonly IVNPayService _vpnService;
 
-        public OrderController(IOrderService orderService, IUserService userService)
+        public OrderController(IOrderService orderService, IUserService userService, IVNPayService vpnService)
         {
             _orderService = orderService;
             _userService = userService;
+            _vpnService = vpnService;
         }
-
-
-
-
-
         // GET: api/<OrderController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -70,16 +67,16 @@ namespace DiscApi.Controllers
                 var username = User.FindFirst(ClaimTypes.Name)?.Value;
                 int userId = await _userService.getUserId(username);
 
-                if (userId != 0)
+                if (userId == 0)
                 {
-                    await _orderService.Order(checkOutDTO, userId);
-                    return Ok();
+                    return Unauthorized();                  
                 }
+                var order = await _orderService.Order(checkOutDTO, userId);
+                var urlPayment = _vpnService.GetUrlPayment(1, order);
+                if(urlPayment == null)
+                    return BadRequest();
+                return Ok(urlPayment);
 
-                else
-                {
-                    return Unauthorized();
-                }
             }
 
             catch (Exception ex)

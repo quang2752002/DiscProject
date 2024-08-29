@@ -84,8 +84,7 @@ namespace DiscApi.Services.Implements
         }
         public async Task<bool> SignUp(RegisterDTO userData)
         {
-            try
-            {
+           
                 var mailExisting = await _userManager.FindByEmailAsync(userData.Email);
                 if (mailExisting != null) throw new Exception("The email already used");
                 var newUser = new User()
@@ -99,11 +98,7 @@ namespace DiscApi.Services.Implements
                 var addUserResult = await _userManager.CreateAsync(newUser, userData.Password);
                 if (!addUserResult.Succeeded) throw new Exception(addUserResult.ToString());
                 return true;
-            }
-            catch (Exception ex) 
-            { 
-                return false;
-            }
+           
            
         }
 

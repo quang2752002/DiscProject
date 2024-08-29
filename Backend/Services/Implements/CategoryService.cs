@@ -7,7 +7,7 @@ using DiscApi.Services.Interfaces;
 
 namespace DiscApi.Services.Implements
 {
-    public class CategoryService:ICategoryService
+    public class CategoryService : ICategoryService
     {
         private readonly IBaseRepository<Category> _baseRepository;
         private readonly ICategoryRepository _categoryRepository;
@@ -22,24 +22,14 @@ namespace DiscApi.Services.Implements
 
         public async Task<List<CategoryDTOResponse>> getCategoryByTypeId(int typeId)
         {
-            var query=await _categoryRepository.getCategoryByTypeId(typeId);
+            var query = await _categoryRepository.getCategoryByTypeId(typeId);
             return query;
         }
 
         public async Task<List<CategoryDTOResponse>> getList()
         {
-            try
-            {
-                var categories = await _categoryRepository.getList();
-                return categories ?? new List<CategoryDTOResponse>();
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Error getting all categories");
-                return new List<CategoryDTOResponse>();
-            }
+            var categories = await _categoryRepository.getList();
+            return categories ?? new List<CategoryDTOResponse>();
         }
     }
-
-   
 }

@@ -37,9 +37,7 @@ namespace DiscApi.Data
                 .OnDelete(DeleteBehavior.Restrict);
             builder.Entity<IdentityRole<int>>().ToTable("Role");
             builder.Entity<User>().ToTable("User");
-            builder.Entity<IdentityUserRole<int>>().ToTable("UserRole");
-            
+            builder.Entity<IdentityUserRole<int>>().ToTable("UserRole");          
         }
-
     }
 }

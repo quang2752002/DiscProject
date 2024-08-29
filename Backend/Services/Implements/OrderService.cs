@@ -26,10 +26,9 @@ namespace DiscApi.Services.Implements
             _productRespository = productRespository;
         }
 
-        public async Task<bool> Order(CheckOutDTO checkOutDTO, int userId)
+        public async Task<Order> Order(CheckOutDTO checkOutDTO, int userId)
         {
-            try
-            {
+           
                 Order order = new Order();
                 order.UserId = userId;
                 await _baseRepository.AddAsync(order);//them mới đơn hàng
@@ -48,12 +47,8 @@ namespace DiscApi.Services.Implements
                     await _orderitemRepository.AddAsync(orderItem);
 
                 }
-                return true;
-            }
-            catch (Exception ex)
-            {              
-                return false;
-            }
+                return order;
+           
         }
        
     }

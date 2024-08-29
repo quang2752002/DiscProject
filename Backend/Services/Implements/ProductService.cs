@@ -25,35 +25,22 @@ namespace DiscApi.Services.Implements
 
         public async Task<Product> GetByIdAsync(int id)
         {
-            try
-            {
+            
                 return await _baseRepository.GetByIdAsync(id);
-            }
-            catch (Exception ex)
-            {
-                _productLogger.LogError(ex, "Error getting product by ID");
-                return null;
-            }
+           
         }
 
         public async Task<List<Product>> GetAllAsync()
         {
-            try
-            {
+            
                 var products = await _baseRepository.GetAllAsync();
                 return products.ToList();
-            }
-            catch (Exception ex)
-            {
-                _productLogger.LogError(ex, "Error getting all products");
-                return null;
-            }
+           
         }
 
         public async Task<bool> AddAsync(ProductDTO entity)
         {
-            try
-            {
+           
                 var item = new Product
                 {
                     Name = entity.Name,
@@ -67,18 +54,12 @@ namespace DiscApi.Services.Implements
 
                 var result = await _baseRepository.AddAsync(item);
                 return result != null;
-            }
-            catch (Exception ex)
-            {
-                _productLogger.LogError(ex, "Error adding product");
-                return false;
-            }
+           
         }
 
         public async Task<bool> UpdateAsync(ProductDTO entity)
         {
-            try
-            {
+           
                 var item = await _baseRepository.GetByIdAsync(entity.Id);
                 if (item == null)
                 {
@@ -95,18 +76,12 @@ namespace DiscApi.Services.Implements
 
                 var result = await _baseRepository.UpdateAsync(item);
                 return result != null;
-            }
-            catch (Exception ex)
-            {
-                _productLogger.LogError(ex, "Error updating product");
-                return false;
-            }
+           
         }
 
         public async Task<bool> RemoveAsync(int id)
         {
-            try
-            {
+            
                 var product = await GetByIdAsync(id);
                 if (product == null)
                 {
@@ -115,26 +90,15 @@ namespace DiscApi.Services.Implements
 
                 var result = await _baseRepository.RemoveAsync(product);
                 return result != null;
-            }
-            catch (Exception ex)
-            {
-                _productLogger.LogError(ex, "Error removing product");
-                return false;
-            }
+           
         }
 
         public async Task<List<Product>> SearchAsync(Expression<Func<Product, bool>> predicate)
         {
-            try
-            {
+            
                 var result = await _baseRepository.SearchAsync(predicate);
                 return result.ToList();
-            }
-            catch (Exception ex)
-            {
-                _productLogger.LogError(ex, "Error searching products");
-                return null;
-            }
+           
         }
 
         public async Task<(List<ProductDTOResponse> Products, int Total)> ShowListAsync(
@@ -144,32 +108,18 @@ namespace DiscApi.Services.Implements
                                                                          int index ,
                                                                          int size )
         {
-            try
-            {
+            
                 // Retrieve results from the repository
                 var result = await _productRepository.ShowListAsync(name, idType, idCategory, index, size);
                 return result;
-            }
-            catch (Exception ex)
-            {
-                // Log the error with details
-                _productLogger.LogError(ex, "Error searching products");
-
-                // Return an empty list and zero total count
-                return (Products: new List<ProductDTOResponse>(), Total: 0);
-            }
+           
         }
         public async Task<List<ProductDTOResponse>> GetProductDetail(int id)
         {
-            try
-            {
+            
                 var product = _productRepository.GetProductDetail(id);
                 return product;
-            }
-            catch (Exception ex) {
-                _productLogger.LogError(ex, "Error ");
-                return null;
-            }
+          
 
         }
         public async Task<List<ProductDTOResponse>> getProductNew(int index, int size)

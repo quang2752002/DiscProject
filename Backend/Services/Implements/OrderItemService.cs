@@ -23,16 +23,10 @@ namespace DiscApi.Services.Implements
 
         public async Task<(List<OrderItemDTOResponse> Review, int Total)> GetReviews(int id, int index, int size)
         {
-            try
-            {
+            
                 var query = await _orderItemRepository.GetReviews(id,index,size);
                 return query;
-            }
-            catch (Exception ex) 
-            {
-                logger.LogError(ex, "Error ");
-                return (Products: new List<OrderItemDTOResponse>(), Total: 0);
-            }
+            
 
         }
         public async Task<List<OrderItemDTOResponse>> GetOrderHistory(int userId)
